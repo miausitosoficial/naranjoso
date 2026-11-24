@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Personaje · Naranjoso</title>
+<meta name="description" content="Ficha de personaje de la serie Naranjoso de @miausitos_oficial.">
+<meta name="theme-color" content="#F28C38">
+<link rel="icon" href="assets/perfil/perfil_normal.webp">
+<script>document.documentElement.classList.add("js");try{var t=localStorage.getItem("tema");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/estilo.css?v=8">
+</head>
+<body class="pag-personaje">
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-tt" viewBox="0 0 24 24"><path d="M16.6 2h-3.3v13.2a2.9 2.9 0 1 1-2-2.8V9a6.3 6.3 0 1 0 5.3 6.2V8.4a7.8 7.8 0 0 0 4.4 1.4V6.5a4.5 4.5 0 0 1-4.4-4.5Z"/></symbol>
+  <symbol id="i-bajar" viewBox="0 0 24 24"><path d="M12 4v12M6 11l6 6 6-6M5 20h14"/></symbol>
+</svg>
+
+<header class="barra" id="barra">
+  <div class="wrap barra-in">
+    <a class="marca" href="index.html">
+      <img src="assets/perfil/perfil_normal.webp" alt="" width="42" height="42">
+      <span><b>Naranjoso</b><small>@miausitos_oficial</small></span>
+    </a>
+    <nav class="menu" aria-label="Secciones">
+      <a href="index.html#personajes">Personajes</a>
+      <a href="index.html#capitulos">Capítulos</a>
+      <a href="index.html#stickers">Stickers</a>
+    </nav>
+    <button class="tema" id="tema" type="button" aria-label="Cambiar tema">
+      <svg class="sol-i" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8"/></svg>
+      <svg class="luna-i" viewBox="0 0 24 24"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5Z"/></svg>
+    </button>
+    <a class="btn btn-tt btn-chico" href="https://www.tiktok.com/@miausitos_oficial" target="_blank" rel="noopener">Seguir</a>
+  </div>
+</header>
+
+<main>
+  <section class="ficha-hero" id="fichaHero">
+    <span class="nombre-fondo" id="nombreFondo" aria-hidden="true"></span>
+    <div class="wrap">
+      <nav class="migas" aria-label="Ruta"><a href="index.html#personajes">← Personajes</a><span aria-hidden="true">/</span><span id="migaNombre"></span></nav>
+      <div class="ficha-in">
+        <button class="ficha-gato" id="fichaGato" type="button" aria-label="Cambiar cara">
+          <img id="fichaImg" alt="" width="430" height="430">
+          <span class="toca" aria-hidden="true">¡Tócame!</span>
+        </button>
+        <div>
+          <span class="ficha-rol" id="fichaRol"></span>
+          <h1 id="fichaNombre">…</h1>
+          <p class="ficha-sub" id="fichaSub"></p>
+          <p class="ficha-frase" id="fichaFrase" hidden></p>
+          <ul class="chips" id="fichaChips"></ul>
+          <p class="ficha-nota" id="fichaNota" hidden></p>
+        </div>
+      </div>
+    </div>
+    <svg class="ola" viewBox="0 0 1440 44" preserveAspectRatio="none" aria-hidden="true"><path d="M0 44V22C120 4 240 0 360 10s240 30 360 22 240-30 360-30 240 18 360 26V44Z"/></svg>
+  </section>
+
+  <section class="sec" style="padding-top:36px">
+    <div class="wrap dos">
+      <article class="bloque rv">
+        <div class="bloque-cab"><span class="ico" aria-hidden="true">🐾</span><h2>Apariencia física</h2></div>
+        <ul id="fichaFisica"></ul>
+      </article>
+      <article class="bloque rv" style="--d:1">
+        <div class="bloque-cab"><span class="ico" aria-hidden="true">💭</span><h2>Personalidad</h2></div>
+        <ul id="fichaPersonalidad"></ul>
+      </article>
+    </div>
+  </section>
+
+  <section class="sec sec-caps" style="padding:80px 0">
+    <div class="wrap">
+      <div class="cab rv">
+        <span class="kicker">Episodios</span>
+        <h2>Aparece <span class="sub">en</span></h2>
+        <p id="capsTxt"></p>
+      </div>
+      <ol class="rail" id="fichaCaps"></ol>
+      <p class="faltan" id="faltan" hidden></p>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="wrap">
+      <div class="cab rv">
+        <span class="kicker">Sprites</span>
+        <h2>Todas sus <span class="sub">poses</span></h2>
+        <p>Toca una para verla en grande y descargarla.</p>
+      </div>
+      <div class="tabs-fila">
+        <div class="tabs" id="etapas" role="tablist" aria-label="Etapa" hidden>
+          <button role="tab" aria-selected="true" data-e="naranjoso">Crecido</button>
+          <button role="tab" aria-selected="false" data-e="naranjoso_bebe">Bebé</button>
+        </div>
+        <div class="tabs" id="tipos" role="tablist" aria-label="Tipo de pose">
+          <button role="tab" aria-selected="true" data-t="todas">Todas</button>
+          <button role="tab" aria-selected="false" data-t="sentado">Sentado</button>
+          <button role="tab" aria-selected="false" data-t="caminando">Caminando</button>
+          <button role="tab" aria-selected="false" data-t="otras">Echado y más</button>
+        </div>
+      </div>
+      <div class="stickers poses" id="poses"></div>
+
+      <div class="hoja rv">
+        <a class="hoja-img" id="hojaLink" target="_blank" rel="noopener"><img id="hojaImg" alt="" loading="lazy"></a>
+        <div class="hoja-txt">
+          <span class="kicker">Hoja de sprites</span>
+          <h3>Todas las poses en una imagen</h3>
+          <p id="hojaTxt">La hoja completa, tal como sale del generador de la serie.</p>
+          <div class="acciones">
+            <a class="btn btn-naranja" id="hojaBajar" download><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><use href="#i-bajar"/></svg> Descargar hoja</a>
+            <a class="btn btn-blanco" id="hojaVer" target="_blank" rel="noopener">Ver completa</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" style="padding-top:0">
+    <div class="wrap">
+      <div class="sub-cab"><span class="emo" aria-hidden="true">🐱</span><h3>Más personajes</h3></div>
+      <nav class="otros" id="otros" aria-label="Más personajes"></nav>
+      <div class="antsig" id="antsig"></div>
+    </div>
+  </section>
+</main>
+
+<footer class="pie">
+  <div class="wrap">
+    <img class="pie-gato" src="assets/sprites/naranjoso/durmiendo_panza_arriba.webp" alt="" width="120" height="90" loading="lazy">
+    <div class="pie-logo">Naranjoso</div>
+    <a class="pie-handle" href="https://www.tiktok.com/@miausitos_oficial" target="_blank" rel="noopener">@miausitos_oficial</a>
+    <nav class="pie-links" aria-label="Pie">
+      <a href="index.html#personajes">Personajes</a><a href="index.html#capitulos">Capítulos</a><a href="index.html#stickers">Stickers</a>
+      <a href="https://www.tiktok.com/@miausitos_oficial" target="_blank" rel="noopener">TikTok</a>
+    </nav>
+    <small>© <span id="anio">2026</span> Miausitos · Naranjoso y sus amigos son personajes originales.</small>
+  </div>
+</footer>
+
+<div class="visor" id="visor" hidden role="dialog" aria-modal="true" aria-label="Sprite en grande">
+  <figure>
+    <button class="cerrar" id="visorCerrar" type="button" aria-label="Cerrar">×</button>
+    <img id="visorImg" alt="">
+    <figcaption id="visorTxt"></figcaption>
+    <a class="btn btn-naranja" id="visorBajar" download><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><use href="#i-bajar"/></svg> Descargar</a>
+  </figure>
+</div>
+
+<script src="js/datos.js?v=8"></script>
+<script src="js/comun.js?v=8"></script>
+<script src="js/personaje.js?v=8"></script>
+</body>
+</html>
