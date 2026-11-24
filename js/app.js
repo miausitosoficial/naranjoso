@@ -1,4 +1,4 @@
-(() => {
+cargarTikTok().then(() => {
   const $ = (s, el = document) => el.querySelector(s);
   const spr = (id, pose) => `assets/sprites/${carpetaSprites(id)}/${pose}.webp`;
   const niebla = `<span class="niebla" aria-hidden="true"><i>?</i><i>?</i><i>?</i><i>?</i></span>`;
@@ -66,7 +66,7 @@
   $("#ultimoBox").innerHTML = `
     <div class="telefono rv">
       <a class="pantalla" href="${ult.url}" target="_blank" rel="noopener" aria-label="Ver el capítulo ${esc(ult.n)} en TikTok">
-        <img src="assets/portadas/${ult.img}.webp" alt="Portada del capítulo ${esc(ult.n)}" width="540" height="960">
+        <img src="${portadaDe(ult)}" alt="Portada del capítulo ${esc(ult.n)}" width="540" height="960">
         <span class="play"><svg viewBox="0 0 24 24"><use href="#i-play"/></svg></span>
         <span class="tt-lado" aria-hidden="true"><span class="av"><img src="assets/perfil/perfil_normal.webp" alt=""></span><i>♥</i><i>💬</i><i>↗</i></span>
         <span class="tt-ui" aria-hidden="true"><b>@miausitos_oficial</b>Cap. ${esc(ult.n)} · ${esc(ult.titulo)} 🐾</span>
@@ -124,7 +124,7 @@
     <li class="rv" style="--d:${i % 4}">
       <a class="cap ${c.saga ? "noche" : ""}" href="${c.url}" target="_blank" rel="noopener">
         <span class="cap-portada">
-          <img src="assets/portadas/${c.img}.webp" alt="Portada del capítulo ${esc(c.n)}" width="540" height="960" loading="lazy">
+          <img src="${portadaDe(c)}" alt="Portada del capítulo ${esc(c.n)}" width="540" height="960" loading="lazy">
           <span class="cap-n">${esc(c.n)}</span>
           <span class="play" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#i-play"/></svg></span>
         </span>
@@ -147,4 +147,4 @@
     </figure>`).join("");
 
   observarRV();
-})();
+});

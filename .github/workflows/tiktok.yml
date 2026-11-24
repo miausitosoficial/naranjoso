@@ -1,0 +1,71 @@
+# Revisa TikTok cada 6 horas y agrega los capítulos nuevos a la web.
+# También se puede correr a mano: pestaña Actions → "Sincronizar TikTok" → Run workflow.
+name: Sincronizar TikTok
+
+on:
+  schedule:
+    - cron: "17 */6 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pages: write
+
+concurrency:
+  group: tiktok-sync
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Buscar videos nuevos en TikTok
+        env:
+          TIKTOK_CLIENT_KEY: ${{ secrets.TIKTOK_CLIENT_KEY }}
+          TIKTOK_CLIENT_SECRET: ${{ secrets.TIKTOK_CLIENT_SECRET }}
+          TIKTOK_REFRESH_TOKEN: ${{ secrets.TIKTOK_REFRESH_TOKEN }}
+          NUEVO_REFRESH_TOKEN_PATH: ${{ runner.temp }}/nuevo_refresh
+        run: python scripts/tiktok_sync.py
+
+      # Si TikTok cambió el refresh token, lo guarda (solo si existe el secreto SECRETS_PAT).
+      - name: Actualizar refresh token
+        env:
+          GH_TOKEN: ${{ secrets.SECRETS_PAT }}
+        run: |
+          f="${{ runner.temp }}/nuevo_refresh"
+          if [ -s "$f" ]; then
+            if [ -n "$GH_TOKEN" ]; then
+              gh secret set TIKTOK_REFRESH_TOKEN --repo "$GITHUB_REPOSITORY" < "$f"
+              echo "Refresh token actualizado."
+            else
+              echo "::warning::TikTok entregó un refresh token nuevo pero no hay SECRETS_PAT para guardarlo."
+            fi
+            rm -f "$f"
+          fi
+
+      - name: Publicar cambios
+        id: commit
+        run: |
+          git add data assets/portadas/tiktok 2>/dev/null || true
+          if git diff --cached --quiet; then
+            echo "Nada nuevo."
+            echo "cambio=no" >> "$GITHUB_OUTPUT"
+          else
+            git config user.name "naranjoso-bot"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git commit -m "Capítulos nuevos desde TikTok"
+            git push
+            echo "cambio=si" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Reconstruir GitHub Pages
+        if: steps.commit.outputs.cambio == 'si'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh api -X POST "repos/$GITHUB_REPOSITORY/pages/builds" || true

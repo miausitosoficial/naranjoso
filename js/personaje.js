@@ -1,4 +1,4 @@
-(() => {
+cargarTikTok().then(() => {
   const $ = s => document.querySelector(s);
   const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
   const spr = (dir, pose) => `assets/sprites/${carpetaSprites(dir)}/${pose}.webp`;
@@ -61,7 +61,7 @@
       : `${p.nombre} aparece en ${p.caps.length} capítulo${p.caps.length > 1 ? "s" : ""}.`;
   $("#fichaCaps").innerHTML = CAPITULOS.filter(c => p.caps.includes(c.n)).map((c, j) => `
     <li class="rv" style="--d:${j}"><a class="mini" href="${c.url}" target="_blank" rel="noopener">
-      <img src="assets/portadas/${c.img}.webp" alt="" width="540" height="960" loading="lazy">
+      <img src="${portadaDe(c)}" alt="" width="540" height="960" loading="lazy">
       <span class="n">${esc(c.n)}</span>
       ${c.n === p.caps[0] ? '<span class="pri">Debut</span>' : ""}
       <span class="t">${esc(c.titulo)}</span>
@@ -128,4 +128,4 @@
   if (actual) $("#otros").scrollLeft = actual.offsetLeft - 40;
 
   observarRV();
-})();
+});
