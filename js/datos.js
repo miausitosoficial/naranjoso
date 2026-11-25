@@ -182,25 +182,26 @@ const PERSONAJES = [
     personalidad: ["Soñadora y despistada; a veces se queda dormida en plena pelea."] },
 ];
 
-/* url: link al video. Si no hay link directo todavía, usa el perfil (TIKTOK). */
+/* url: link al video en TikTok (si no hay link directo todavía, usa el perfil: TIKTOK).
+   video: archivo en assets/videos/ para verlo dentro de la web (si no hay, la tarjeta abre TikTok). */
 const CAPITULOS = [
-  { n: "1", titulo: "¡Un gato apareció de la nada!", img: "portada_cap1",
+  { n: "1", titulo: "¡Un gato apareció de la nada!", img: "portada_cap1", video: "assets/videos/cap1.mp4",
     desc: "Naranjoso aparece en la casa nueva… y termina adoptado.",
     url: "https://www.tiktok.com/@miausitos_oficial/video/7710689190035442962" },
-  { n: "2", titulo: "¡Rompió mi jarrón… y volvió con esto!", img: "portada_cap2",
+  { n: "2", titulo: "¡Rompió mi jarrón… y volvió con esto!", img: "portada_cap2", video: "assets/videos/cap2.mp4",
     desc: "Rompe el jarrón, se escapa por la ventana y vuelve con una canasta de pajaritos y ratones.",
     url: "https://www.tiktok.com/@miausitos_oficial/video/7710699014991121682" },
-  { n: "3", titulo: "El almuerzo desaparecido", img: "portada_cap3",
+  { n: "3", titulo: "El almuerzo desaparecido", img: "portada_cap3", video: "assets/videos/cap3.mp4",
     desc: "El pescado frito del dueño desaparece. Naranjoso eructa. Caso resuelto.",
     url: "https://www.tiktok.com/@miausitos_oficial/video/7711087504086109447" },
-  { n: "4", titulo: "La fiesta secreta", img: "portada_cap4",
+  { n: "4", titulo: "La fiesta secreta", img: "portada_cap4", video: "assets/videos/cap4.mp4",
     desc: "El dueño sale y Naranjoso arma fiesta con los gatos del barrio.",
     url: "https://www.tiktok.com/@miausitos_oficial/video/7711159218501422343" },
-  { n: "5", titulo: "Pelea a las 3:00 a.m.", img: "portada_cap5", saga: "Saga de Garras",
+  { n: "5", titulo: "Pelea a las 3:00 a.m.", img: "portada_cap5", video: "assets/videos/cap5.mp4", saga: "Saga de Garras",
     desc: "Naranjoso se enfrenta a Garras de noche mientras los gatos miran con cabritas.", url: TIKTOK },
-  { n: "5.1", titulo: "No vino solo", img: "portada_cap5.1", saga: "Saga de Garras",
+  { n: "5.1", titulo: "No vino solo", img: "portada_cap5.1", video: "assets/videos/cap5.1.mp4", saga: "Saga de Garras",
     desc: "Llega la pandilla de Garras: 5 contra 3.", url: TIKTOK },
-  { n: "5.2", titulo: "La gran batalla", img: "portada_cap5.2", saga: "Saga de Garras",
+  { n: "5.2", titulo: "La gran batalla", img: "portada_cap5.2", video: "assets/videos/cap5.2.mp4", saga: "Saga de Garras",
     desc: "El equipo Naranjoso gana y él se va a dormir con su dueño.", url: TIKTOK },
 ];
 

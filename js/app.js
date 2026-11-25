@@ -65,7 +65,7 @@ cargarTikTok().then(() => {
   const reparto = ["naranjoso", ...PERSONAJES.filter(p => p.id !== "naranjoso" && p.caps.includes(ult.n)).map(p => p.id)];
   $("#ultimoBox").innerHTML = `
     <div class="telefono rv">
-      <a class="pantalla" href="${ult.url}" target="_blank" rel="noopener" aria-label="Ver el capítulo ${esc(ult.n)} en TikTok">
+      <a class="pantalla" ${enlaceCap(ult)} aria-label="Ver el capítulo ${esc(ult.n)}">
         <img src="${portadaDe(ult)}" alt="Portada del capítulo ${esc(ult.n)}" width="540" height="960">
         <span class="play"><svg viewBox="0 0 24 24"><use href="#i-play"/></svg></span>
         <span class="tt-lado" aria-hidden="true"><span class="av"><img src="assets/perfil/perfil_normal.webp" alt=""></span><i>♥</i><i>💬</i><i>↗</i></span>
@@ -78,7 +78,7 @@ cargarTikTok().then(() => {
       <p>${esc(ult.desc)}</p>
       <div class="reparto">${reparto.map(id => `<a href="${url(id)}" title="${esc(porId[id].nombre)}" style="background:${porId[id].tinte}"><img src="${spr(id, "sentado_normal")}" alt="${esc(porId[id].nombre)}" loading="lazy"></a>`).join("")}</div>
       <div class="acciones">
-        <a class="btn btn-naranja" href="${ult.url}" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><use href="#i-play"/></svg> Verlo ahora</a>
+        <a class="btn btn-naranja" ${enlaceCap(ult)}><svg viewBox="0 0 24 24"><use href="#i-play"/></svg> Verlo ahora</a>
         <a class="btn btn-blanco" href="#capitulos">Todos los capítulos</a>
       </div>
     </div>`;
@@ -124,7 +124,7 @@ cargarTikTok().then(() => {
   /* ---------- Capítulos ---------- */
   $("#caps").innerHTML = CAPITULOS.map((c, i) => `
     <li class="rv" style="--d:${i % 4}">
-      <a class="cap ${c.saga ? "noche" : ""}" href="${c.url}" target="_blank" rel="noopener">
+      <a class="cap ${c.saga ? "noche" : ""}" ${enlaceCap(c)}>
         <span class="cap-portada">
           <img src="${portadaDe(c)}" alt="Portada del capítulo ${esc(c.n)}" width="540" height="960" loading="lazy">
           <span class="cap-n">${esc(c.n)}</span>
@@ -134,7 +134,7 @@ cargarTikTok().then(() => {
           ${c.saga ? `<span class="cap-saga">🌙 ${esc(c.saga)}</span>` : ""}
           <span class="cap-tit">${esc(c.titulo)}</span>
           <span class="cap-desc">${esc(c.desc)}</span>
-          <span class="cap-ver">Ver en TikTok <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><use href="#i-flecha"/></svg></span>
+          <span class="cap-ver">${c.video ? "Ver capítulo" : "Ver en TikTok"} <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><use href="#i-flecha"/></svg></span>
         </span>
       </a>
     </li>`).join("");
@@ -149,4 +149,5 @@ cargarTikTok().then(() => {
     </figure>`).join("");
 
   observarRV();
+  desdeHashCine();
 });

@@ -60,7 +60,7 @@ cargarTikTok().then(() => {
       ? `${p.nombre} todavía no aparece en los capítulos publicados. ¡Atento a los próximos!`
       : `${p.nombre} aparece en ${p.caps.length} capítulo${p.caps.length > 1 ? "s" : ""}.`;
   $("#fichaCaps").innerHTML = CAPITULOS.filter(c => p.caps.includes(c.n)).map((c, j) => `
-    <li class="rv" style="--d:${j}"><a class="mini" href="${c.url}" target="_blank" rel="noopener">
+    <li class="rv" style="--d:${j}"><a class="mini" ${enlaceCap(c)}>
       <img src="${portadaDe(c)}" alt="" width="540" height="960" loading="lazy">
       <span class="n">${esc(c.n)}</span>
       ${c.n === p.caps[0] ? '<span class="pri">Debut</span>' : ""}
@@ -128,4 +128,5 @@ cargarTikTok().then(() => {
   if (actual) $("#otros").scrollLeft = actual.offsetLeft - 40;
 
   observarRV();
+  desdeHashCine();
 });
