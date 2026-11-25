@@ -10,7 +10,7 @@ cargarTikTok().then(() => {
 
   /* ---------- Stats ---------- */
   $("#stats").innerHTML = [
-    [CAPITULOS.length, "capítulos"], [PERSONAJES.length, "gatos"], [1, "jarrón roto"],
+    [capsLargos().length, "capítulos"], [PERSONAJES.length, "gatos"], [1, "jarrón roto"],
   ].map(([n, t]) => `<li><b>${n}</b><span>${t}</span></li>`).join("");
 
   /* ---------- Escena del hero ---------- */
@@ -53,7 +53,7 @@ cargarTikTok().then(() => {
   }
 
   /* ---------- Ticker ---------- */
-  const ult = CAPITULOS[CAPITULOS.length - 1];
+  const ult = capsLargos()[capsLargos().length - 1];
   const noticias = [`Nuevo: Cap. ${ult.n} · ${ult.titulo}`, "Pelea a las 3:00 a.m. en el barrio", "Se busca jarrón de reemplazo",
     "Pescado frito: desaparecido", "Fiesta secreta mientras el dueño no estaba", "Nube demanda a Gris por $1.500", "Garras sigue prófugo", "5 contra 3: ganó el Equipo Naranjoso"];
   const items = noticias.map(t => `<span>${esc(t)}</span>`).join("");
@@ -185,23 +185,46 @@ cargarTikTok().then(() => {
     el.addEventListener("pointerleave", () => { img.src = a; });
   });
 
-  /* ---------- Capítulos ---------- */
-  $("#caps").innerHTML = CAPITULOS.map((c, i) => `
-    <li class="rv" style="--d:${i % 4}">
-      <a class="cap ${c.saga ? "noche" : ""}" ${enlaceCap(c)}>
-        <span class="cap-portada">
-          <img src="${portadaDe(c)}" alt="Portada del capítulo ${esc(c.n)}" width="540" height="960" loading="lazy">
-          <span class="cap-n">${esc(c.n)}</span>
+  /* ---------- Capítulos (agrupados: 5 · 5.1 · 5.2 — 6 · Sh. Ep.) ---------- */
+  const grupos = [];
+  CAPITULOS.forEach(c => {
+    const g = grupoCap(c);
+    let gr = grupos.find(x => x.g === g);
+    if (!gr) grupos.push(gr = { g, partes: [] });
+    gr.partes.push(c);
+  });
+  const flechaVer = `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><use href="#i-flecha"/></svg>`;
+  const tarjeta = (gr, c, cambia) => `
+      <div class="cap ${c.saga ? "noche" : ""} ${cambia ? "cambia" : ""}">
+        <a class="cap-portada" ${enlaceCap(c)} aria-label="Ver ${esc(nombreCap(c))}: ${esc(c.titulo)}">
+          <img src="${portadaDe(c)}" alt="Portada del ${esc(nombreCap(c))}" width="540" height="960" loading="lazy">
+          <span class="cap-n">${esc(gr.g)}</span>
           <span class="play" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#i-play"/></svg></span>
-        </span>
-        <span class="cap-info">
+        </a>
+        <div class="cap-info">
+          ${gr.partes.length > 1 ? `<div class="cap-partes" role="group" aria-label="Elegir parte del capítulo ${esc(gr.g)}">${gr.partes.map(x =>
+            `<button type="button" data-n="${x.n}" aria-pressed="${x === c}">${esc(etiquetaParte(x))}</button>`).join("")}</div>` : ""}
           ${c.saga ? `<span class="cap-saga">🌙 ${esc(c.saga)}</span>` : ""}
           <span class="cap-tit">${esc(c.titulo)}</span>
           <span class="cap-desc">${esc(c.desc)}</span>
-          <span class="cap-ver">${c.video ? "Ver capítulo" : "Ver en TikTok"} <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><use href="#i-flecha"/></svg></span>
-        </span>
-      </a>
-    </li>`).join("");
+          <a class="cap-ver" ${enlaceCap(c)}>${c.video ? "Ver capítulo" : "Ver en TikTok"} ${flechaVer}</a>
+        </div>
+      </div>`;
+  $("#caps").innerHTML = grupos.map((gr, i) =>
+    `<li class="rv" style="--d:${i % 4}" data-g="${gr.g}">${tarjeta(gr, gr.partes[0])}</li>`).join("");
+  $("#caps").addEventListener("click", e => {
+    const li = e.target.closest("li");
+    if (!li) return;
+    const b = e.target.closest(".cap-partes button");
+    if (b) {
+      const gr = grupos.find(x => x.g === li.dataset.g);
+      li.innerHTML = tarjeta(gr, gr.partes.find(x => x.n === b.dataset.n), true);
+      li.querySelector(`.cap-partes [data-n="${b.dataset.n}"]`).focus({ preventScroll: true });
+      return;
+    }
+    // tocar cualquier parte de la tarjeta (que no sea un botón o link) abre el capítulo elegido
+    if (!e.target.closest("a")) li.querySelector(".cap-portada").click();
+  });
 
   /* ---------- Stickers ---------- */
   const nombrePose = n => n.replace(/_/g, " ").replace("rasguno", "rasguño").replace("panzon", "panzón");

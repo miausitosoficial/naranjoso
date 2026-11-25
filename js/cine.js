@@ -62,7 +62,7 @@ const enlaceCap = c => c.video
     actual = c;
     video.poster = portadaDe(c);
     video.src = c.video;
-    document.getElementById("cineN").textContent = `Capítulo ${c.n}`;
+    document.getElementById("cineN").textContent = nombreCap(c).replace("Cap.", "Capítulo");
     const saga = document.getElementById("cineSaga");
     saga.hidden = !c.saga; saga.textContent = c.saga ? `🌙 ${c.saga}` : "";
     document.getElementById("cineTit").textContent = c.titulo;
@@ -73,7 +73,7 @@ const enlaceCap = c => c.video
     tt.href = c.url; tt.hidden = !c.url;
     document.getElementById("cineLista").innerHTML = conVideo().map(x => `
       <li><button type="button" data-ir="${x.n}" ${x === c ? 'aria-current="true"' : ""}>
-        <img src="${portadaDe(x)}" alt="" loading="lazy"><span><b>Cap. ${esc(x.n)}</b>${esc(x.titulo)}</span>
+        <img src="${portadaDe(x)}" alt="" loading="lazy"><span><b>${esc(nombreCap(x))}</b>${esc(x.titulo)}</span>
       </button></li>`).join("");
     cine.hidden = false;
     document.documentElement.classList.add("cine-abierto");
@@ -100,7 +100,7 @@ const enlaceCap = c => c.video
     const sig = actual && vecino(actual, 1);
     if (!sig) return;
     document.getElementById("cineFinImg").src = portadaDe(sig);
-    document.getElementById("cineFinTit").textContent = `Cap. ${sig.n} · ${sig.titulo}`;
+    document.getElementById("cineFinTit").textContent = `${nombreCap(sig)} · ${sig.titulo}`;
     document.getElementById("cineFin").hidden = false;
     let s = 5;
     const pinta = () => { document.getElementById("cineCuenta").textContent = `(${s})`; };
@@ -126,7 +126,7 @@ const enlaceCap = c => c.video
     else if (e.key === "ArrowLeft" && e.target.tagName !== "VIDEO") ir(-1);
   });
   /* Enlace directo: #ver-5.1 */
-  const desdeHash = () => { const m = location.hash.match(/^#ver-([\d.]+)$/); if (m) abrir(decodeURIComponent(m[1]), { autoplay: false }); };
+  const desdeHash = () => { const m = location.hash.match(/^#ver-([\w.]+)$/); if (m) abrir(decodeURIComponent(m[1]), { autoplay: false }); };
   addEventListener("hashchange", desdeHash);
   window.abrirCine = abrir;
   window.desdeHashCine = desdeHash;

@@ -45,7 +45,7 @@ cargarTikTok().then(() => {
     <li>${primera
       ? `<a href="${primera.url}" target="_blank" rel="noopener"><small>Primera aparición</small><b>Cap. ${esc(primera.n)} · ${esc(primera.titulo)}</b></a>`
       : `<small>Primera aparición</small><b>¡Próximamente!</b>`}</li>
-    <li><small>Episodios</small><b>${p.caps.length} de ${CAPITULOS.length}</b></li>
+    <li><small>Episodios</small><b>${p.caps.length} de ${capsLargos().length}</b></li>
     <li><small>Grupo</small><b>${{ equipo: "Equipo Naranjoso", villano: "Pandilla de Garras", barrio: "Vecinos del barrio" }[p.grupo]}</b></li>`;
 
   /* ---------- Física y personalidad ---------- */
@@ -53,7 +53,7 @@ cargarTikTok().then(() => {
   $("#fichaPersonalidad").innerHTML = p.personalidad.map(t => `<li>${esc(t)}</li>`).join("");
 
   /* ---------- Episodios ---------- */
-  $("#capsTxt").textContent = p.caps.length === CAPITULOS.length
+  $("#capsTxt").textContent = p.caps.length === capsLargos().length
     ? "¡En todos los capítulos! Es el protagonista, obvio."
     : p.caps.length === 0
       ? `${p.nombre} todavía no aparece en los capítulos publicados. ¡Atento a los próximos!`
@@ -65,7 +65,7 @@ cargarTikTok().then(() => {
       ${c.n === p.caps[0] ? '<span class="pri">Debut</span>' : ""}
       <span class="t">${esc(c.titulo)}</span>
     </a></li>`).join("");
-  const faltan = CAPITULOS.filter(c => !p.caps.includes(c.n)).map(c => c.n);
+  const faltan = capsLargos().filter(c => !p.caps.includes(c.n)).map(c => c.n);
   if (faltan.length && p.caps.length) { $("#faltan").hidden = false; $("#faltan").textContent = `No aparece en: cap. ${faltan.join(", ")}.`; }
 
   /* ---------- Sprites ---------- */

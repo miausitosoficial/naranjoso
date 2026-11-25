@@ -346,7 +346,18 @@ button { font: inherit; color: inherit; }
 @media (min-width: 900px) { .caps { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 22px; } }
 .cap { display: flex; flex-direction: column; height: 100%; text-decoration: none; background: var(--papel); border-radius: var(--r); overflow: hidden; box-shadow: var(--sombra-s); transition: transform .35s cubic-bezier(.3, 1.5, .5, 1), box-shadow .3s; }
 .cap:hover { transform: translateY(-8px); box-shadow: var(--sombra); }
-.cap-portada { position: relative; aspect-ratio: 9 / 16; overflow: hidden; background: #000; }
+.cap-portada { position: relative; display: block; aspect-ratio: 9 / 16; overflow: hidden; background: #000; }
+.cap { cursor: pointer; }
+.cap-ver { text-decoration: none; }
+.cap-partes { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 2px; }
+.cap-partes button { border: 0; cursor: pointer; font: 700 .82rem/1 var(--f-t); padding: 6px 11px; border-radius: 999px; background: var(--bg-2); color: var(--tinta-2); transition: background .2s, color .2s, transform .2s; }
+.cap-partes button:hover { transform: translateY(-1px); color: var(--tinta); }
+.cap-partes button[aria-pressed="true"] { background: var(--naranja); color: #fff; box-shadow: 0 3px 0 var(--naranja-o); }
+.cap.noche .cap-partes button { background: rgba(255,255,255,.12); color: #E8DDF7; }
+.cap.noche .cap-partes button[aria-pressed="true"] { background: #FFB872; color: #2A1A3A; box-shadow: 0 3px 0 #C77A2E; }
+.cap.cambia .cap-portada img { animation: cambia-portada .45s ease-out; }
+.cap.cambia .cap-tit, .cap.cambia .cap-desc { animation: entra-info .4s cubic-bezier(.2, .8, .2, 1) both; }
+@keyframes cambia-portada { from { opacity: .2; transform: scale(1.06); } }
 .cap-portada img { width: 100%; height: 100%; object-fit: cover; transition: transform .5s, filter .3s; }
 .cap:hover .cap-portada img { transform: scale(1.05); filter: brightness(.8); }
 .cap .play { width: 60px; height: 60px; margin: -30px; top: 50%; opacity: 0; transform: scale(.7); transition: opacity .25s, transform .3s cubic-bezier(.3, 1.6, .5, 1); }

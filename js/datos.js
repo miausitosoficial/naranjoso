@@ -206,9 +206,19 @@ const CAPITULOS = [
     desc: "Llega la pandilla de Garras: 5 contra 3.", url: TIKTOK },
   { n: "5.2", titulo: "La gran batalla", img: "portada_cap5.2", video: "assets/videos/cap5.2.mp4", saga: "Saga de Garras",
     desc: "El equipo Naranjoso gana y él se va a dormir con su dueño.", url: TIKTOK },
-  { n: "6", titulo: "¡Caso cerrado!", img: "portada_cap6", video: "assets/videos/cap6.mp4",
+  { n: "6", parte: "Completo", titulo: "¡Caso cerrado!", img: "portada_cap6", video: "assets/videos/cap6.mp4",
     desc: "Juicio gatuno: Nube demanda a Gris por $1.500 por robarle el aura. Gana Nube.", url: TIKTOK },
+  { n: "6sh", parte: "Sh. Ep.", corto: true, titulo: "¡Caso cerrado!", img: "portada_cap6", video: "assets/videos/cap6sh.mp4",
+    desc: "Versión corta (Sh. Ep.) del juicio gatuno: lo mejor del caso en 25 segundos.", url: TIKTOK },
 ];
+
+/* Partes: los capítulos con el mismo número (5 · 5.1 · 5.2, o 6 y su Sh. Ep.) se muestran juntos
+   en una sola tarjeta con botones para elegir. "parte" = nombre del botón (si no hay, se usa n).
+   "corto: true" = versión corta: no cuenta como capítulo aparte. */
+const grupoCap = c => String(parseInt(c.n, 10));
+const nombreCap = c => (c.parte ? `Cap. ${grupoCap(c)} · ${c.parte}` : `Cap. ${c.n}`);
+const etiquetaParte = c => c.parte || c.n;
+const capsLargos = () => CAPITULOS.filter(c => !c.corto);
 
 /* Adornos que flotan a los lados de cada gato en el catálogo del inicio.
    Son dibujos SVG definidos en js/deco.js (cada nombre = un <symbol id="d-nombre">). */
