@@ -1,14 +1,12 @@
 cargarTikTok().then(() => {
   const $ = (s, el = document) => el.querySelector(s);
   const spr = (id, pose) => `assets/sprites/${carpetaSprites(id)}/${pose}.webp`;
-  const niebla = `<span class="niebla" aria-hidden="true"><i>?</i><i>?</i><i>?</i><i>?</i></span>`;
   const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
   const quieto = matchMedia("(prefers-reduced-motion: reduce)").matches;
   const porId = Object.fromEntries(PERSONAJES.map(p => [p.id, p]));
   const capPorN = Object.fromEntries(CAPITULOS.map(c => [c.n, c]));
   const url = id => `personaje.html?id=${id}`;
   const vt = id => `style="view-transition-name:gato-${id}"`;
-  const flecha = `<span class="carta-flecha" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#i-flecha"/></svg></span>`;
 
   /* ---------- Stats ---------- */
   $("#stats").innerHTML = [
@@ -83,42 +81,108 @@ cargarTikTok().then(() => {
       </div>
     </div>`;
 
-  /* ---------- Personajes ---------- */
-  const grupo = g => PERSONAJES.filter(p => p.grupo === g);
-  $("#equipo").innerHTML = grupo("equipo").map((p, i) => {
-    const estrella = p.id === "naranjoso";
-    return `
-    <a class="carta rv ${estrella ? "estrella" : ""}" href="${url(p.id)}" style="--tinte:${p.tinte};--d:${i}">
-      <span class="carta-img"><img src="${spr(p.id, estrella ? "sentado_feliz" : "sentado_normal")}" data-alt="${spr(p.id, estrella ? "sentado_ojos_brillantes" : "sentado_feliz")}" alt="" width="300" height="300" loading="lazy" ${vt(p.id)}></span>
-      ${estrella ? `<span class="tag">Protagonista</span>` : ""}
-      <span class="carta-nombre">${esc(p.nombre)}</span>
-      <span class="carta-sub">${esc(estrella ? p.desc : p.subtitulo)}</span>
-      ${flecha}
-    </a>`;
+  /* ---------- Personajes: catálogo "elige a tu gato" ---------- */
+  const GRUPOS = { equipo: "Equipo Naranjoso", villano: "Pandilla de Garras", barrio: "Vecinos del barrio" };
+  const FILTROS = [["todos", "Todos"], ["equipo", "Equipo"], ["villano", "Villanos"], ["barrio", "Barrio"]];
+  const CARAS_BASE = ["sentado_normal", "sentado_feliz", "sentado_maullando", "sentado_saludando", "sentado_sorprendido", "sentado_ojos_brillantes"];
+  const foco = $("#foco"), selector = $("#selector");
+  let sel = "naranjoso", filtro = "todos";
+
+  $("#filtrosCat").innerHTML = FILTROS.map(([f, t]) => {
+    const n = f === "todos" ? PERSONAJES.length : PERSONAJES.filter(p => p.grupo === f).length;
+    return `<button role="tab" type="button" data-f="${f}" aria-selected="${f === filtro}">${t} <span>${n}</span></button>`;
   }).join("");
 
-  $("#villanos").innerHTML = grupo("villano").map((p, i) => `
-    <a class="cartel rv ${MISTERIO.has(p.id) ? "misterio" : ""}" href="${url(p.id)}" style="--d:${i}">
-      <span class="se-busca">SE BUSCA</span>
-      <span class="foto">${MISTERIO.has(p.id) ? niebla : ""}<img src="${spr(p.id, "sentado_enojado")}" data-alt="${spr(p.id, "sentado_erizado")}" alt="" width="300" height="300" loading="lazy" ${vt(p.id)}></span>
-      <span class="nom">${esc(p.nombre)}</span>
-      <span class="visto">${p.caps.length ? `Visto en el cap. ${esc(p.caps[p.caps.length - 1])}` : "Aún no lo han visto…"}</span>
-      ${p.id === "garras" && p.caps.includes("5.2") ? `<span class="sello">¡HUYÓ!</span>` : ""}
-    </a>`).join("");
+  selector.innerHTML = PERSONAJES.map(p => `
+    <button class="tile" type="button" role="option" id="tile-${p.id}" data-id="${p.id}" data-g="${p.grupo}"
+            aria-selected="${p.id === sel}" style="--tinte:${p.tinte}" tabindex="-1">
+      <span class="tile-img"><img src="${spr(p.id, "sentado_normal")}" data-alt="${spr(p.id, p.grupo === "villano" ? "sentado_enojado" : "sentado_feliz")}" alt="" width="120" height="120" loading="lazy"></span>
+      <span class="tile-nom">${esc(p.nombre)}</span>
+    </button>`).join("");
 
-  $("#barrio").innerHTML = grupo("barrio").map((p, i) => `
-    <a class="vecino rv" href="${url(p.id)}" style="--tinte:${p.tinte};--d:${i}">
-      <span><img src="${spr(p.id, "sentado_normal")}" data-alt="${spr(p.id, "sentado_feliz")}" alt="" width="200" height="200" loading="lazy" ${vt(p.id)}></span>
-      <span><b>${esc(p.nombre)}</b><small>${esc(p.desc)}</small></span>
-    </a>`).join("");
+  function pintarFoco(anim) {
+    const p = porId[sel];
+    const deb = capPorN[p.caps[0]];
+    const caras = p.caras || CARAS_BASE;
+    foco.dataset.grupo = p.grupo;
+    foco.style.setProperty("--tinte-foco", p.tinte);
+    foco.innerHTML = `
+      <div class="foco-escena">
+        <span class="foco-fondo" aria-hidden="true">${esc(p.nombre)}</span>
+        ${p.grupo === "villano" ? `<span class="foco-sello" aria-hidden="true">SE BUSCA</span>` : ""}
+        <button class="foco-gato" type="button" aria-label="Cambiar la cara de ${esc(p.nombre)}">
+          <img src="${spr(p.id, caras[0])}" alt="${esc(p.nombre)}" width="420" height="420" ${vt(p.id)}>
+        </button>
+        <span class="foco-toca" aria-hidden="true">¡Tócame!</span>
+      </div>
+      <div class="foco-info">
+        <span class="foco-rol">${esc(GRUPOS[p.grupo])}</span>
+        <h3>${esc(p.nombre)}</h3>
+        <p class="foco-sub">${esc(p.subtitulo || p.rol)}</p>
+        ${p.frase ? `<p class="foco-frase">${esc(p.frase)}</p>` : ""}
+        <ul class="foco-datos">
+          <li><small>Debut</small><b>${deb ? `Cap. ${esc(deb.n)}` : "Pronto"}</b></li>
+          <li><small>Episodios</small><b>${p.caps.length}</b></li>
+          <li><small>Poses</small><b>${TODAS_POSES.length}</b></li>
+        </ul>
+        <ul class="foco-rasgos">${p.personalidad.slice(0, 2).map(t => `<li>${esc(t)}</li>`).join("")}</ul>
+        <div class="acciones">
+          <a class="btn btn-naranja" href="${url(p.id)}">Ver ficha completa <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><use href="#i-flecha"/></svg></a>
+          ${deb ? `<a class="btn btn-blanco" ${enlaceCap(deb)}><svg viewBox="0 0 24 24"><use href="#i-play"/></svg> Ver su debut</a>` : ""}
+        </div>
+      </div>`;
+    if (anim) { foco.classList.remove("cambia"); void foco.offsetWidth; foco.classList.add("cambia"); }
+    let k = 0;
+    const b = $(".foco-gato", foco), img = $("img", b);
+    caras.forEach(c => { new Image().src = spr(p.id, c); });
+    b.addEventListener("click", e => {
+      k = (k + 1) % caras.length; img.src = spr(p.id, caras[k]);
+      b.classList.remove("sacude"); void b.offsetWidth; b.classList.add("sacude");
+      setTimeout(() => b.classList.remove("sacude"), 500);
+      chispas(e.clientX, e.clientY, p.grupo === "villano" ? ["💢", "⚡", "🐾"] : ["✨", "🐾", "🧡"]);
+    });
+  }
 
-  // cara alternativa al pasar el mouse / enfocar
-  document.querySelectorAll("img[data-alt]").forEach(img => {
-    const a = img.getAttribute("src"), b = img.dataset.alt, el = img.closest("a");
+  function elegir(id, { anim = true, enfocar = false } = {}) {
+    if (id === sel && !enfocar) return;
+    sel = id;
+    selector.querySelectorAll(".tile").forEach(t => {
+      const si = t.dataset.id === id;
+      t.setAttribute("aria-selected", si);
+      t.tabIndex = si ? 0 : -1;
+    });
+    const t = $(`#tile-${id}`);
+    selector.setAttribute("aria-activedescendant", `tile-${id}`);
+    if (enfocar) t.focus({ preventScroll: true });
+    t.scrollIntoView({ block: "nearest", inline: "center", behavior: quieto ? "auto" : "smooth" });
+    pintarFoco(anim);
+  }
+
+  const visibles = () => [...selector.querySelectorAll(".tile:not([hidden])")];
+  selector.addEventListener("click", e => { const t = e.target.closest(".tile"); if (t) elegir(t.dataset.id); });
+  selector.addEventListener("keydown", e => {
+    const l = visibles(), i = l.findIndex(t => t.dataset.id === sel);
+    const d = { ArrowRight: 1, ArrowDown: 1, ArrowLeft: -1, ArrowUp: -1 }[e.key];
+    if (d) { e.preventDefault(); elegir(l[(i + d + l.length) % l.length].dataset.id, { enfocar: true }); }
+    else if (e.key === "Home") { e.preventDefault(); elegir(l[0].dataset.id, { enfocar: true }); }
+    else if (e.key === "End") { e.preventDefault(); elegir(l[l.length - 1].dataset.id, { enfocar: true }); }
+    else if (e.key === "Enter") location.href = url(sel);
+  });
+  $("#filtrosCat").addEventListener("click", e => {
+    const b = e.target.closest("button"); if (!b) return;
+    filtro = b.dataset.f;
+    $("#filtrosCat").querySelectorAll("button").forEach(x => x.setAttribute("aria-selected", x === b));
+    selector.querySelectorAll(".tile").forEach(t => { t.hidden = !(filtro === "todos" || t.dataset.g === filtro); });
+    const l = visibles();
+    if (!l.some(t => t.dataset.id === sel)) elegir(l[0].dataset.id);
+  });
+  pintarFoco(false);
+
+  // cara alternativa al pasar el mouse por un gato del selector
+  selector.querySelectorAll("img[data-alt]").forEach(img => {
+    const a = img.getAttribute("src"), b = img.dataset.alt, el = img.closest(".tile");
     el.addEventListener("pointerenter", () => { img.src = b; });
     el.addEventListener("pointerleave", () => { img.src = a; });
-    el.addEventListener("focus", () => { img.src = b; });
-    el.addEventListener("blur", () => { img.src = a; });
   });
 
   /* ---------- Capítulos ---------- */

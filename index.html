@@ -14,7 +14,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/estilo.css?v=11">
+<link rel="stylesheet" href="css/estilo.css?v=13">
 <link rel="preload" as="image" href="assets/sprites/naranjoso/sentado_saludando.webp">
 </head>
 <body class="inicio">
@@ -104,18 +104,17 @@
     <div class="wrap">
       <div class="cab rv">
         <span class="kicker">El reparto</span>
-        <h2>Conoce a la <span class="sub">pandilla</span></h2>
-        <p>Toca a cualquiera para ver su ficha completa: cómo es, qué le gusta, dónde aparece y todos sus sprites.</p>
+        <h2>Elige a tu <span class="sub">gato</span></h2>
+        <p>Toca a cualquiera para conocerlo. En su ficha completa ves cómo es, dónde aparece y todos sus sprites.</p>
       </div>
 
-      <div class="sub-cab rv"><span class="emo" aria-hidden="true">🧡</span><h3>Equipo Naranjoso</h3></div>
-      <div class="equipo" id="equipo"></div>
-
-      <div class="sub-cab rv"><span class="emo" aria-hidden="true">😾</span><h3>Los villanos</h3></div>
-      <div class="villanos" id="villanos"></div>
-
-      <div class="sub-cab rv"><span class="emo" aria-hidden="true">🏘️</span><h3>Los vecinos del barrio</h3></div>
-      <div class="barrio" id="barrio"></div>
+      <div class="catalogo rv">
+        <div class="selector-zona">
+          <div class="filtros-cat" id="filtrosCat" role="tablist" aria-label="Filtrar personajes"></div>
+          <div class="selector" id="selector" role="listbox" aria-label="Elegir personaje" tabindex="0"></div>
+        </div>
+        <article class="foco" id="foco" aria-live="polite"></article>
+      </div>
     </div>
   </section>
 
@@ -173,10 +172,10 @@
   </div>
 </footer>
 
-<script src="js/datos.js?v=11"></script>
-<script src="js/comun.js?v=11"></script>
-<script src="js/tiktok.js?v=11"></script>
-<script src="js/cine.js?v=11"></script>
-<script src="js/app.js?v=11"></script>
+<script src="js/datos.js?v=13"></script>
+<script src="js/comun.js?v=13"></script>
+<script src="js/tiktok.js?v=13"></script>
+<script src="js/cine.js?v=13"></script>
+<script src="js/app.js?v=13"></script>
 </body>
 </html>

@@ -116,7 +116,7 @@ cargarTikTok().then(() => {
 
   /* ---------- Más personajes ---------- */
   $("#otros").innerHTML = PERSONAJES.map(q => `
-    <a class="otro" href="personaje.html?id=${q.id}" style="--tinte:${q.tinte}" ${q.id === p.id ? 'aria-current="page"' : ""}>
+    <a class="otro ${MISTERIO.has(q.id) ? "misterio" : ""}" href="personaje.html?id=${q.id}" style="--tinte:${q.tinte}" ${q.id === p.id ? 'aria-current="page"' : ""}>
       <span><img src="${spr(q.id, "sentado_normal")}" alt="" width="92" height="92" loading="lazy"></span><b>${esc(q.nombre)}</b>
     </a>`).join("");
   const ant = PERSONAJES[(i - 1 + PERSONAJES.length) % PERSONAJES.length];
