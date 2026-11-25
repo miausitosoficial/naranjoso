@@ -205,22 +205,23 @@ const CAPITULOS = [
     desc: "El equipo Naranjoso gana y él se va a dormir con su dueño.", url: TIKTOK },
 ];
 
-/* Decoración que flota a los lados de cada gato en el catálogo del inicio */
+/* Adornos que flotan a los lados de cada gato en el catálogo del inicio.
+   Son dibujos SVG definidos en js/deco.js (cada nombre = un <symbol id="d-nombre">). */
 const DECO = {
-  naranjoso: ["🐟", "🍊", "🐟", "🍗", "🍊", "💤"],
-  nube: ["☁️", "☁️", "✨", "☁️", "☁️", "💙"],
-  gris: ["🍿", "✨", "📸", "🍿", "✨", "😎"],
-  luna: ["🌙", "⭐", "✨", "⭐", "🌙", "✨"],
-  manchas: ["🎉", "🍿", "🎊", "🎈", "🍿", "🎉"],
-  garras: ["💢", "⚡", "🗑️", "⚡", "💢", "🦴"],
-  colmillo: ["🦇", "🌙", "💢", "🦇", "⚡", "🦇"],
-  tuerto: ["🏴‍☠️", "⚓", "💢", "🗺️", "⚓", "🏴‍☠️"],
-  humo: ["💨", "👀", "💬", "💨", "💬", "👀"],
-  canela: ["🍂", "😮", "✨", "🍂", "😮", "🍁"],
-  sombra: ["📣", "⭐", "🙌", "📣", "🙌", "⭐"],
-  crema: ["🍿", "🥛", "💛", "🍿", "🥛", "✨"],
-  atigrado: ["🍃", "😰", "🌿", "🍃", "🌿", "😰"],
-  pelusa: ["🧶", "💤", "🌸", "🧶", "💤", "🌸"],
+  naranjoso: ["pez", "naranja", "pez", "pierna", "naranja", "zzz"],
+  nube: ["nube", "nube", "brillo", "nube", "nube", "corazon"],
+  gris: ["palomitas", "brillo", "camara", "palomitas", "brillo", "lentes"],
+  luna: ["luna", "estrella", "brillo", "estrella", "luna", "brillo"],
+  manchas: ["confeti", "palomitas", "globo", "confeti", "palomitas", "globo"],
+  garras: ["ira", "rayo", "basurero", "rayo", "ira", "hueso"],
+  colmillo: ["murcielago", "luna", "ira", "murcielago", "rayo", "murcielago"],
+  tuerto: ["bandera", "ancla", "ira", "mapa", "ancla", "bandera"],
+  humo: ["humo", "ojos", "chisme", "humo", "chisme", "ojos"],
+  canela: ["hoja", "ooh", "brillo", "hoja-roja", "ooh", "hoja"],
+  sombra: ["megafono", "dale", "estrella", "megafono", "dale", "estrella"],
+  crema: ["palomitas", "leche", "corazon", "palomitas", "leche", "brillo"],
+  atigrado: ["hoja-verde", "gota", "hoja-verde", "gota", "hoja-verde", "gota"],
+  pelusa: ["ovillo", "zzz", "flor", "ovillo", "zzz", "flor"],
 };
 
 /* Todas las poses (mismos nombres para cada personaje) */
