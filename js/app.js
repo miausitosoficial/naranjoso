@@ -18,7 +18,7 @@ cargarTikTok().then(() => {
   /* ---------- Escena del hero ---------- */
   const REACCIONES = {
     naranjoso: [["sentado_feliz", "¡Prrr!"], ["sentado_ojos_brillantes", "¿Eso es pescado?"], ["sentado_bostezo", "Mmm… siesta"],
-      ["sentado_panzon", "Comí demasiado"], ["sentado_con_rasguno", "Fue a las 3:00 a.m…"], ["sentado_cabeza_ladeada", "¿Mm?"],
+      ["sentado_panzon", "Comí demasiado"], ["sentado_campeon_rasguno", "¡Le gané a Garras!"], ["sentado_cabeza_ladeada", "¿Mm?"],
       ["sentado_brazos_arriba", "¡Fiesta!"], ["sentado_saludando", "¡Miau!"]],
     nube: [["sentado_sorprendido", "¡¿Una pelea?!"], ["sentado_maullando", "¡Miau!"], ["sentado_ojos_brillantes", "¿Soy bonita?"], ["sentado_feliz", "Jiji"]],
     gris: [["sentado_ojos_cerrados", "Casualmente perfecto ✨"], ["sentado_mira_arriba", "¿Hay palomitas?"], ["sentado_feliz", "¿Me sacas una foto?"], ["sentado_normal", "…"]],
@@ -57,7 +57,7 @@ cargarTikTok().then(() => {
   /* ---------- Ticker ---------- */
   const ult = CAPITULOS[CAPITULOS.length - 1];
   const noticias = [`Nuevo: Cap. ${ult.n} · ${ult.titulo}`, "Pelea a las 3:00 a.m. en el barrio", "Se busca jarrón de reemplazo",
-    "Pescado frito: desaparecido", "Fiesta secreta mientras el dueño no estaba", "¿Quién es ese gato grande?"];
+    "Pescado frito: desaparecido", "Fiesta secreta mientras el dueño no estaba", "Garras sigue prófugo", "5 contra 3: ganó el Equipo Naranjoso"];
   const items = noticias.map(t => `<span>${esc(t)}</span>`).join("");
   $("#ticker").innerHTML = items + items;
 
@@ -102,7 +102,9 @@ cargarTikTok().then(() => {
       <span class="se-busca">SE BUSCA</span>
       <span class="foto">${MISTERIO.has(p.id) ? niebla : ""}<img src="${spr(p.id, "sentado_enojado")}" data-alt="${spr(p.id, "sentado_erizado")}" alt="" width="300" height="300" loading="lazy" ${vt(p.id)}></span>
       <span class="nom">${esc(p.nombre)}</span>
-      <span class="visto">${p.caps.length ? `Visto en el cap. ${esc(p.caps[p.caps.length - 1])}` : "Aún no lo han visto…"}</span>    </a>`).join("");
+      <span class="visto">${p.caps.length ? `Visto en el cap. ${esc(p.caps[p.caps.length - 1])}` : "Aún no lo han visto…"}</span>
+      ${p.id === "garras" && p.caps.includes("5.2") ? `<span class="sello">¡HUYÓ!</span>` : ""}
+    </a>`).join("");
 
   $("#barrio").innerHTML = grupo("barrio").map((p, i) => `
     <a class="vecino rv" href="${url(p.id)}" style="--tinte:${p.tinte};--d:${i}">
