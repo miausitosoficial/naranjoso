@@ -16,7 +16,7 @@ const PERSONAJES = [
     subtitulo: "El protagonista",
     desc: "Flojo, glotón y de buen corazón. Duerme en la cama del dueño y come la comida de los demás.",
     nota: "Bebé en los caps. 1–3 · crecido desde el cap. 4",
-    caps: ["1", "2", "3", "4", "5", "5.1", "5.2", "6", "7"],
+    caps: ["1", "2", "3", "4", "5", "5.1", "5.2", "6", "7", "8"],
     fisica: [
       "Gato atigrado naranja con blanco: pecho, patitas, hocico y una franja en la frente blancos.",
       "Ojos verdes enormes y brillantes, bigotes largos y pelaje esponjoso con mechones.",
@@ -213,6 +213,9 @@ const CAPITULOS = [
   { n: "7", titulo: "¡Al veterinario!", img: "portada_cap7", video: "assets/videos/cap7.mp4",
     desc: "Naranjoso se resfría por meterse al agua fría, se encuentra con Nube en el veterinario… y cuando lo llaman, sale volando por la ventana. Vuelve con cono.",
     url: "https://www.tiktok.com/@miausitos_oficial/video/7712222052601662738" },
+  { n: "8", titulo: "Mi gato vs el árbol de Navidad", img: "portada_cap8", video: "assets/videos/cap8.mp4",
+    desc: "El dueño arma el árbol de Navidad: “Ni se te ocurra, Naranjoso…”. Esa noche, ¡PUM! A la mañana lo encuentran enredado en luces y con la estrella puesta.",
+    url: TIKTOK },
 ];
 
 /* Partes: los capítulos con el mismo número (5 · 5.1 · 5.2, o 6 y su Sh. Ep.) se muestran juntos
