@@ -17,9 +17,9 @@ cargarTikTok().then(() => {
   const REACCIONES = {
     naranjoso: [["sentado_feliz", "¡Prrr!"], ["sentado_ojos_brillantes", "¿Eso es pescado?"], ["sentado_bostezo", "Mmm… siesta"],
       ["sentado_panzon", "Comí demasiado"], ["sentado_campeon_rasguno", "¡Le gané a Garras!"], ["sentado_cabeza_ladeada", "¿Mm?"],
-      ["sentado_brazos_arriba", "¡Fiesta!"], ["sentado_saludando", "¡Miau!"]],
-    nube: [["sentado_sorprendido", "¡¿Una pelea?!"], ["sentado_maullando", "¡Miau!"], ["sentado_ojos_brillantes", "¿Soy bonita?"], ["sentado_feliz", "Jiji"]],
-    gris: [["sentado_ojos_cerrados", "Casualmente perfecto ✨"], ["sentado_mira_arriba", "¿Hay palomitas?"], ["sentado_feliz", "¿Me sacas una foto?"], ["sentado_normal", "…"]],
+      ["sentado_brazos_arriba", "¡CASO CERRADO!"], ["sentado_saludando", "¡Miau!"]],
+    nube: [["sentado_sorprendido", "¡Me robó el aura!"], ["sentado_maullando", "¡Miau!"], ["sentado_ojos_brillantes", "¿Soy bonita?"], ["sentado_feliz", "Jiji"]],
+    gris: [["sentado_ojos_cerrados", "El aura no se roba… se tiene ✨"], ["sentado_mira_arriba", "¿Hay palomitas?"], ["sentado_feliz", "12.400 seguidores"], ["sentado_normal", "…"]],
   };
   const idx = { naranjoso: REACCIONES.naranjoso.length - 1, nube: 3, gris: 3 };
   Object.entries(REACCIONES).forEach(([id, l]) => l.forEach(([p]) => { new Image().src = spr(id, p); }));
@@ -55,7 +55,7 @@ cargarTikTok().then(() => {
   /* ---------- Ticker ---------- */
   const ult = CAPITULOS[CAPITULOS.length - 1];
   const noticias = [`Nuevo: Cap. ${ult.n} · ${ult.titulo}`, "Pelea a las 3:00 a.m. en el barrio", "Se busca jarrón de reemplazo",
-    "Pescado frito: desaparecido", "Fiesta secreta mientras el dueño no estaba", "Garras sigue prófugo", "5 contra 3: ganó el Equipo Naranjoso"];
+    "Pescado frito: desaparecido", "Fiesta secreta mientras el dueño no estaba", "Nube demanda a Gris por $1.500", "Garras sigue prófugo", "5 contra 3: ganó el Equipo Naranjoso"];
   const items = noticias.map(t => `<span>${esc(t)}</span>`).join("");
   $("#ticker").innerHTML = items + items;
 

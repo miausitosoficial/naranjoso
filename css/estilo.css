@@ -329,13 +329,21 @@ button { font: inherit; color: inherit; }
 .sec-caps::before, .sec-caps::after { content: ""; position: absolute; left: 0; right: 0; height: 40px; background: var(--bg); }
 .sec-caps::before { top: -1px; border-radius: 0 0 50% 50% / 0 0 100% 100%; }
 .sec-caps::after { bottom: -1px; border-radius: 50% 50% 0 0 / 100% 100% 0 0; }
-.caps { list-style: none; margin: 0 -16px; padding: 6px 16px 22px; display: grid; grid-auto-flow: column; grid-auto-columns: 68%; gap: 14px; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; }
-.caps::-webkit-scrollbar { display: none; }
-.caps li { scroll-snap-align: center; }
-@media (min-width: 560px) { .caps { grid-auto-columns: 42%; } }
-@media (min-width: 900px) { .caps { grid-auto-flow: row; grid-template-columns: repeat(4, minmax(0, 1fr)); margin: 0; padding: 0; overflow: visible; gap: 22px; } }
-.desliza-tip { text-align: center; color: var(--tinta-2); font-size: .85rem; font-weight: 700; margin-top: -8px; }
-@media (min-width: 900px) { .desliza-tip { display: none; } }
+.caps { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: minmax(0, 1fr); gap: 12px; }
+/* celular: lista con la portada a la izquierda (nada queda cortado) */
+@media (max-width: 559px) {
+  .caps .cap { flex-direction: row; }
+  .caps .cap-portada { width: 37%; flex: none; align-self: flex-start; aspect-ratio: 9 / 16; }
+  .caps .cap-info { padding: 12px 14px 14px; gap: 4px; }
+  .caps .cap-tit { font-size: 1.08rem; }
+  .caps .cap-desc { font-size: .86rem; }
+  .caps .cap-n { min-width: 36px; height: 36px; border-radius: 12px; font-size: 1rem; left: 7px; top: 7px; }
+  .caps .play { display: none; }
+  .caps .cap-info { align-self: center; }
+}
+@media (min-width: 560px) { .caps { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; } }
+@media (min-width: 760px) { .caps { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; } }
+@media (min-width: 900px) { .caps { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 22px; } }
 .cap { display: flex; flex-direction: column; height: 100%; text-decoration: none; background: var(--papel); border-radius: var(--r); overflow: hidden; box-shadow: var(--sombra-s); transition: transform .35s cubic-bezier(.3, 1.5, .5, 1), box-shadow .3s; }
 .cap:hover { transform: translateY(-8px); box-shadow: var(--sombra); }
 .cap-portada { position: relative; aspect-ratio: 9 / 16; overflow: hidden; background: #000; }
@@ -436,11 +444,10 @@ button { font: inherit; color: inherit; }
 .bloque li { display: grid; grid-template-columns: 22px 1fr; gap: 10px; font-weight: 600; }
 .bloque li::before { content: ""; width: 14px; height: 14px; margin: 6px 0 0 4px; border-radius: 50%; background: var(--naranja); box-shadow: 0 0 0 4px color-mix(in srgb, var(--naranja) 22%, transparent); }
 
-.rail { list-style: none; margin: 0 -16px; padding: 6px 16px 18px; display: grid; grid-auto-flow: column; grid-auto-columns: 44%; gap: 12px; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; }
-.rail::-webkit-scrollbar { display: none; }
-.rail li { scroll-snap-align: start; }
-@media (min-width: 600px) { .rail { grid-auto-columns: 28%; } }
-@media (min-width: 960px) { .rail { grid-auto-flow: row; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); margin: 0; padding: 0; overflow: visible; } }
+.rail { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
+@media (min-width: 600px) { .rail { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; } }
+@media (min-width: 960px) { .rail { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); } }
+@media (max-width: 599px) { .mini .t { font-size: .82rem; } .mini .pri { font-size: .55rem; padding: 3px 5px; } }
 .mini { position: relative; display: block; aspect-ratio: 9 / 16; border-radius: 20px; overflow: hidden; text-decoration: none; color: #fff; box-shadow: var(--sombra-s); transition: transform .3s cubic-bezier(.3, 1.5, .5, 1); }
 .mini:hover { transform: translateY(-6px) rotate(-1deg); }
 .mini img { width: 100%; height: 100%; object-fit: cover; }

@@ -16,7 +16,7 @@ const PERSONAJES = [
     subtitulo: "El protagonista",
     desc: "Flojo, glotón y de buen corazón. Duerme en la cama del dueño y come la comida de los demás.",
     nota: "Bebé en los caps. 1–3 · crecido desde el cap. 4",
-    caps: ["1", "2", "3", "4", "5", "5.1", "5.2"],
+    caps: ["1", "2", "3", "4", "5", "5.1", "5.2", "6"],
     fisica: [
       "Gato atigrado naranja con blanco: pecho, patitas, hocico y una franja en la frente blancos.",
       "Ojos verdes enormes y brillantes, bigotes largos y pelaje esponjoso con mechones.",
@@ -27,15 +27,16 @@ const PERSONAJES = [
       "Flojo y glotón: su lugar favorito es la cama del dueño y su comida favorita… la comida de los demás.",
       "Travieso pero de buen corazón: rompe cosas sin querer y luego pone carita de inocente.",
       "Valiente cuando importa: enfrentó a Garras a las 3 a.m. para defender su barrio.",
-      "Líder natural de su grupo de amigos.",
+      "Líder natural de su grupo de amigos; en el cap. 6 hace de juez y se toma el papel muy en serio.",
       "Le encanta que lo acaricien y siempre termina el día durmiendo con su dueño.",
     ],
+    frase: "¡CASO CERRADO!",
     caras: ["sentado_normal", "sentado_feliz", "sentado_ojos_brillantes", "sentado_bostezo", "sentado_panzon", "sentado_campeon_rasguno", "sentado_maullando"] },
 
   { id: "nube", nombre: "Nube", grupo: "equipo", rol: "Amiga", tinte: "#DDEBFA",
     subtitulo: "La mejor amiga",
-    desc: "Blanca, esponjosa y muy dramática cuando algo le parece injusto.",
-    caps: ["4", "5", "5.1", "5.2"],
+    desc: "Blanca, esponjosa y muy dramática. Demandó a Gris por robarle el aura… y ganó.",
+    caps: ["4", "5", "5.1", "5.2", "6"],
     fisica: [
       "Gata completamente blanca, la más esponjosa del barrio.",
       "Ojos azul cielo, naricita rosada y almohadillas rosadas.",
@@ -45,13 +46,14 @@ const PERSONAJES = [
       "Dulce y sensible, pero muy dramática cuando algo le parece injusto.",
       "Miedosa en las peleas: se tapa los ojos con las patitas… aunque espía entre los dedos.",
       "Fiel a Naranjoso: fue la primera en ponerse a su lado contra la pandilla de Garras y le levantó la patita al ganar.",
-      "Coqueta y preocupada por su imagen.",
-    ] },
+      "Coqueta y preocupada por su imagen; demandó a Gris por “robarle el aura” y ganó.",
+    ],
+    frase: "¡Me robó el aura!" },
 
   { id: "gris", nombre: "Gris", grupo: "equipo", rol: "Amigo", tinte: "#E2E5EC",
     subtitulo: "El amigo con estilo",
     desc: "Esmoquin gris, relajado y fotogénico. Fan de las palomitas.",
-    caps: ["4", "5", "5.1", "5.2"],
+    caps: ["4", "5", "5.1", "5.2", "6"],
     fisica: [
       "Gato gris azulado tipo esmoquin, con pecho y patitas blancas.",
       "Ojos azules y mirada medio dormida cuando posa.",
@@ -59,15 +61,16 @@ const PERSONAJES = [
     ],
     personalidad: [
       "Relajado, seguro de sí mismo y un poco sobrado.",
-      "Fotogénico y popular.",
+      "Fotogénico y popular: tiene 12.400 seguidores en gatogram.",
       "Gran fan de las palomitas; nunca se pierde un espectáculo.",
       "Leal: dejó sus palomitas para pelear junto a Naranjoso en el 5 contra 3.",
-    ] },
+    ],
+    frase: "El aura no se roba… se tiene ✨" },
 
   { id: "luna", nombre: "Luna", grupo: "equipo", rol: "Amiga", tinte: "#E6E0F0",
     subtitulo: "La misteriosa",
     desc: "Negra, de ojos dorados y muy callada. La noctámbula del grupo.",
-    caps: ["4", "5", "5.1", "5.2"],
+    caps: ["4", "5", "5.1", "5.2", "6"],
     fisica: [
       "Gata negra de pelaje brillante con reflejos grisáceos.",
       "Ojos amarillos dorados que brillan en la oscuridad.",
@@ -83,7 +86,7 @@ const PERSONAJES = [
   { id: "manchas", nombre: "Manchas", grupo: "equipo", rol: "Amiga", tinte: "#FBE3C8",
     subtitulo: "La alegre",
     desc: "Calicó fiestera y comelona. La primera en celebrar.",
-    caps: ["4", "5", "5.1", "5.2"],
+    caps: ["4", "5", "5.1", "5.2", "6"],
     fisica: [
       "Gata calicó: blanca con manchas naranjas y negras.",
       "Ojos color miel y carita redonda.",
@@ -203,6 +206,8 @@ const CAPITULOS = [
     desc: "Llega la pandilla de Garras: 5 contra 3.", url: TIKTOK },
   { n: "5.2", titulo: "La gran batalla", img: "portada_cap5.2", video: "assets/videos/cap5.2.mp4", saga: "Saga de Garras",
     desc: "El equipo Naranjoso gana y él se va a dormir con su dueño.", url: TIKTOK },
+  { n: "6", titulo: "¡Caso cerrado!", img: "portada_cap6", video: "assets/videos/cap6.mp4",
+    desc: "Juicio gatuno: Nube demanda a Gris por $1.500 por robarle el aura. Gana Nube.", url: TIKTOK },
 ];
 
 /* Adornos que flotan a los lados de cada gato en el catálogo del inicio.
