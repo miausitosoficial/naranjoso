@@ -16,7 +16,7 @@ const PERSONAJES = [
     subtitulo: "El protagonista",
     desc: "Flojo, glotón y de buen corazón. Duerme en la cama del dueño y come la comida de los demás.",
     nota: "Bebé en los caps. 1–3 · crecido desde el cap. 4",
-    caps: ["1", "2", "3", "4", "5", "5.1", "5.2", "6"],
+    caps: ["1", "2", "3", "4", "5", "5.1", "5.2", "6", "7"],
     fisica: [
       "Gato atigrado naranja con blanco: pecho, patitas, hocico y una franja en la frente blancos.",
       "Ojos verdes enormes y brillantes, bigotes largos y pelaje esponjoso con mechones.",
@@ -36,7 +36,7 @@ const PERSONAJES = [
   { id: "nube", nombre: "Nube", grupo: "equipo", rol: "Amiga", tinte: "#DDEBFA",
     subtitulo: "La mejor amiga",
     desc: "Blanca, esponjosa y muy dramática. Demandó a Gris por robarle el aura… y ganó.",
-    caps: ["4", "5", "5.1", "5.2", "6"],
+    caps: ["4", "5", "5.1", "5.2", "6", "7"],
     fisica: [
       "Gata completamente blanca, la más esponjosa del barrio.",
       "Ojos azul cielo, naricita rosada y almohadillas rosadas.",
@@ -201,15 +201,18 @@ const CAPITULOS = [
     desc: "El dueño sale y Naranjoso arma fiesta con los gatos del barrio.",
     url: "https://www.tiktok.com/@miausitos_oficial/video/7711159218501422343" },
   { n: "5", titulo: "Pelea a las 3:00 a.m.", img: "portada_cap5", video: "assets/videos/cap5.mp4", saga: "Saga de Garras",
-    desc: "Naranjoso se enfrenta a Garras de noche mientras los gatos miran con cabritas.", url: TIKTOK },
+    desc: "Naranjoso se enfrenta a Garras de noche mientras los gatos miran con cabritas.", url: "https://www.tiktok.com/@miausitos_oficial/video/7711821216931220743" },
   { n: "5.1", titulo: "No vino solo", img: "portada_cap5.1", video: "assets/videos/cap5.1.mp4", saga: "Saga de Garras",
-    desc: "Llega la pandilla de Garras: 5 contra 3.", url: TIKTOK },
+    desc: "Llega la pandilla de Garras: 5 contra 3.", url: "https://www.tiktok.com/@miausitos_oficial/video/7711948279193324852" },
   { n: "5.2", titulo: "La gran batalla", img: "portada_cap5.2", video: "assets/videos/cap5.2.mp4", saga: "Saga de Garras",
-    desc: "El equipo Naranjoso gana y él se va a dormir con su dueño.", url: TIKTOK },
+    desc: "El equipo Naranjoso gana y él se va a dormir con su dueño.", url: "https://www.tiktok.com/@miausitos_oficial/video/7712152183457860882" },
   { n: "6", parte: "Completo", titulo: "¡Caso cerrado!", img: "portada_cap6", video: "assets/videos/cap6.mp4",
-    desc: "Juicio gatuno: Nube demanda a Gris por $1.500 por robarle el aura. Gana Nube.", url: TIKTOK },
+    desc: "Juicio gatuno: Nube demanda a Gris por $1.500 por robarle el aura. Gana Nube.", url: "https://www.tiktok.com/@miausitos_oficial/video/7712211759397866759" },
   { n: "6sh", parte: "Sh. Ep.", corto: true, titulo: "¡Caso cerrado!", img: "portada_cap6", video: "assets/videos/cap6sh.mp4",
-    desc: "Versión corta (Sh. Ep.) del juicio gatuno: lo mejor del caso en 25 segundos.", url: TIKTOK },
+    desc: "Versión corta (Sh. Ep.) del juicio gatuno: lo mejor del caso en 25 segundos.", url: "https://www.tiktok.com/@miausitos_oficial/video/7712211759397866759" },
+  { n: "7", titulo: "¡Al veterinario!", img: "portada_cap7", video: "assets/videos/cap7.mp4",
+    desc: "Naranjoso se resfría por meterse al agua fría, se encuentra con Nube en el veterinario… y cuando lo llaman, sale volando por la ventana. Vuelve con cono.",
+    url: "https://www.tiktok.com/@miausitos_oficial/video/7712222052601662738" },
 ];
 
 /* Partes: los capítulos con el mismo número (5 · 5.1 · 5.2, o 6 y su Sh. Ep.) se muestran juntos
