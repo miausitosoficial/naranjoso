@@ -28,7 +28,6 @@ cargarTikTok().then(() => {
   if (misterio) {
     document.body.dataset.misterio = "";
     $("#fichaGato").insertAdjacentHTML("afterbegin", `<span class="niebla" aria-hidden="true"><i>?</i><i>?</i><i>?</i><i>?</i><i>?</i><i>?</i></span>`);
-    $("#fichaGato .toca").textContent = "¿Quién será?";
     $(".hoja").remove();
   }
   $("#fichaGato").addEventListener("click", e => {

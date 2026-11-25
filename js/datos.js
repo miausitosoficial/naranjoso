@@ -205,6 +205,24 @@ const CAPITULOS = [
     desc: "El equipo Naranjoso gana y él se va a dormir con su dueño.", url: TIKTOK },
 ];
 
+/* Decoración que flota a los lados de cada gato en el catálogo del inicio */
+const DECO = {
+  naranjoso: ["🐟", "🍊", "🐟", "🍗", "🍊", "💤"],
+  nube: ["☁️", "☁️", "✨", "☁️", "☁️", "💙"],
+  gris: ["🍿", "✨", "📸", "🍿", "✨", "😎"],
+  luna: ["🌙", "⭐", "✨", "⭐", "🌙", "✨"],
+  manchas: ["🎉", "🍿", "🎊", "🎈", "🍿", "🎉"],
+  garras: ["💢", "⚡", "🗑️", "⚡", "💢", "🦴"],
+  colmillo: ["🦇", "🌙", "💢", "🦇", "⚡", "🦇"],
+  tuerto: ["🏴‍☠️", "⚓", "💢", "🗺️", "⚓", "🏴‍☠️"],
+  humo: ["💨", "👀", "💬", "💨", "💬", "👀"],
+  canela: ["🍂", "😮", "✨", "🍂", "😮", "🍁"],
+  sombra: ["📣", "⭐", "🙌", "📣", "🙌", "⭐"],
+  crema: ["🍿", "🥛", "💛", "🍿", "🥛", "✨"],
+  atigrado: ["🍃", "😰", "🌿", "🍃", "🌿", "😰"],
+  pelusa: ["🧶", "💤", "🌸", "🧶", "💤", "🌸"],
+};
+
 /* Todas las poses (mismos nombres para cada personaje) */
 const TODAS_POSES = ["sentado_normal", "sentado_feliz", "sentado_maullando", "sentado_bostezo", "sentado_ojos_cerrados",
   "sentado_somnoliento", "sentado_ojos_brillantes", "sentado_mira_izquierda", "sentado_mira_derecha", "sentado_mira_arriba",

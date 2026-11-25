@@ -113,7 +113,7 @@ cargarTikTok().then(() => {
         <button class="foco-gato" type="button" aria-label="Cambiar la cara de ${esc(p.nombre)}">
           <img src="${spr(p.id, caras[0])}" alt="${esc(p.nombre)}" width="420" height="420" ${vt(p.id)}>
         </button>
-        <span class="foco-toca" aria-hidden="true">¡Tócame!</span>
+        <span class="decos" aria-hidden="true">${(DECO[p.id] || []).map((d, i) => `<i class="deco d${i}">${d}</i>`).join("")}</span>
       </div>
       <div class="foco-info">
         <span class="foco-rol">${esc(GRUPOS[p.grupo])}</span>
