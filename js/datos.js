@@ -118,7 +118,7 @@ const PERSONAJES = [
   { id: "colmillo", nombre: "Colmillo", grupo: "villano", rol: "Pandilla de Garras", tinte: "#E2DCE8",
     subtitulo: "Pandilla de Garras",
     desc: "Rudo y bravucón, con un colmillo que siempre se le asoma.",
-    caps: ["5.1", "5.2"],
+    caps: ["5.1", "5.2", "10"],
     fisica: [
       "Gato negro con tonos morados y el pecho gris.",
       "Ojos rojos intensos y un colmillo blanco que siempre le sale de la boca.",
