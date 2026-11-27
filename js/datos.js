@@ -16,7 +16,7 @@ const PERSONAJES = [
     subtitulo: "El protagonista",
     desc: "Flojo, glotón y de buen corazón. Duerme en la cama del dueño y come la comida de los demás.",
     nota: "Bebé en los caps. 1–3 · crecido desde el cap. 4",
-    caps: ["1", "2", "3", "4", "5", "5.1", "5.2", "6", "7", "8"],
+    caps: ["1", "2", "3", "4", "5", "5.1", "5.2", "6", "7", "8", "9"],
     fisica: [
       "Gato atigrado naranja con blanco: pecho, patitas, hocico y una franja en la frente blancos.",
       "Ojos verdes enormes y brillantes, bigotes largos y pelaje esponjoso con mechones.",
@@ -36,7 +36,7 @@ const PERSONAJES = [
   { id: "nube", nombre: "Nube", grupo: "equipo", rol: "Amiga", tinte: "#DDEBFA",
     subtitulo: "La mejor amiga",
     desc: "Blanca, esponjosa y muy dramática. Demandó a Gris por robarle el aura… y ganó.",
-    caps: ["4", "5", "5.1", "5.2", "6", "7"],
+    caps: ["4", "5", "5.1", "5.2", "6", "7", "9"],
     fisica: [
       "Gata completamente blanca, la más esponjosa del barrio.",
       "Ojos azul cielo, naricita rosada y almohadillas rosadas.",
@@ -53,7 +53,7 @@ const PERSONAJES = [
   { id: "gris", nombre: "Gris", grupo: "equipo", rol: "Amigo", tinte: "#E2E5EC",
     subtitulo: "El amigo con estilo",
     desc: "Esmoquin gris, relajado y fotogénico. Fan de las palomitas.",
-    caps: ["4", "5", "5.1", "5.2", "6"],
+    caps: ["4", "5", "5.1", "5.2", "6", "9"],
     fisica: [
       "Gato gris azulado tipo esmoquin, con pecho y patitas blancas.",
       "Ojos azules y mirada medio dormida cuando posa.",
@@ -70,7 +70,7 @@ const PERSONAJES = [
   { id: "luna", nombre: "Luna", grupo: "equipo", rol: "Amiga", tinte: "#E6E0F0",
     subtitulo: "La misteriosa",
     desc: "Negra, de ojos dorados y muy callada. La noctámbula del grupo.",
-    caps: ["4", "5", "5.1", "5.2", "6"],
+    caps: ["4", "5", "5.1", "5.2", "6", "9"],
     fisica: [
       "Gata negra de pelaje brillante con reflejos grisáceos.",
       "Ojos amarillos dorados que brillan en la oscuridad.",
@@ -86,7 +86,7 @@ const PERSONAJES = [
   { id: "manchas", nombre: "Manchas", grupo: "equipo", rol: "Amiga", tinte: "#FBE3C8",
     subtitulo: "La alegre",
     desc: "Calicó fiestera y comelona. La primera en celebrar.",
-    caps: ["4", "5", "5.1", "5.2", "6"],
+    caps: ["4", "5", "5.1", "5.2", "6", "9"],
     fisica: [
       "Gata calicó: blanca con manchas naranjas y negras.",
       "Ojos color miel y carita redonda.",
@@ -101,7 +101,7 @@ const PERSONAJES = [
   { id: "garras", nombre: "Garras", grupo: "villano", rol: "Villano", tinte: "#E9D6C6",
     subtitulo: "El villano (el gato grande)",
     desc: "Matón, tramposo y en el fondo cobarde. Quiere ser el dueño del barrio.",
-    caps: ["5", "5.1", "5.2"],
+    caps: ["5", "5.1", "5.2", "9"],
     fisica: [
       "Gato callejero grande y robusto, café oscuro con el pecho café claro.",
       "Ojos rojos, cejas siempre fruncidas y una cicatriz sobre el ojo.",
@@ -215,7 +215,10 @@ const CAPITULOS = [
     url: "https://www.tiktok.com/@miausitos_oficial/video/7712222052601662738" },
   { n: "8", titulo: "Mi gato vs el árbol de Navidad", img: "portada_cap8", video: "assets/videos/cap8.mp4",
     desc: "El dueño arma el árbol de Navidad: “Ni se te ocurra, Naranjoso…”. Esa noche, ¡PUM! A la mañana lo encuentran enredado en luces y con la estrella puesta.",
-    url: TIKTOK },
+    url: "https://www.tiktok.com/@miausitos_oficial/video/7712239414667234566" },
+  { n: "9", titulo: "La revancha de Garras", img: "portada_cap9", video: "assets/videos/cap9.mp4",
+    desc: "Un gatito tierno con moño toca la puerta para pedir perdón… ¡pero era Garras! Le roba la cama a Naranjoso, hasta que llegan sus amigos con la aspiradora.",
+    url: "https://www.tiktok.com/@miausitos_oficial/video/7712635077057875207" },
 ];
 
 /* Partes: los capítulos con el mismo número (5 · 5.1 · 5.2, o 6 y su Sh. Ep.) se muestran juntos
