@@ -16,7 +16,7 @@ const PERSONAJES = [
     subtitulo: "El protagonista",
     desc: "Flojo, glotón y de buen corazón. Duerme en la cama del dueño y come la comida de los demás.",
     nota: "Bebé en los caps. 1–3 · crecido desde el cap. 4",
-    caps: ["1", "2", "3", "4", "5", "5.1", "5.2", "6", "7", "8", "9"],
+    caps: ["1", "2", "3", "4", "5", "5.1", "5.2", "6", "7", "8", "9", "10"],
     fisica: [
       "Gato atigrado naranja con blanco: pecho, patitas, hocico y una franja en la frente blancos.",
       "Ojos verdes enormes y brillantes, bigotes largos y pelaje esponjoso con mechones.",
@@ -36,7 +36,7 @@ const PERSONAJES = [
   { id: "nube", nombre: "Nube", grupo: "equipo", rol: "Amiga", tinte: "#DDEBFA",
     subtitulo: "La mejor amiga",
     desc: "Blanca, esponjosa y muy dramática. Demandó a Gris por robarle el aura… y ganó.",
-    caps: ["4", "5", "5.1", "5.2", "6", "7", "9"],
+    caps: ["4", "5", "5.1", "5.2", "6", "7", "9", "10"],
     fisica: [
       "Gata completamente blanca, la más esponjosa del barrio.",
       "Ojos azul cielo, naricita rosada y almohadillas rosadas.",
@@ -53,7 +53,7 @@ const PERSONAJES = [
   { id: "gris", nombre: "Gris", grupo: "equipo", rol: "Amigo", tinte: "#E2E5EC",
     subtitulo: "El amigo con estilo",
     desc: "Esmoquin gris, relajado y fotogénico. Fan de las palomitas.",
-    caps: ["4", "5", "5.1", "5.2", "6", "9"],
+    caps: ["4", "5", "5.1", "5.2", "6", "9", "10"],
     fisica: [
       "Gato gris azulado tipo esmoquin, con pecho y patitas blancas.",
       "Ojos azules y mirada medio dormida cuando posa.",
@@ -70,7 +70,7 @@ const PERSONAJES = [
   { id: "luna", nombre: "Luna", grupo: "equipo", rol: "Amiga", tinte: "#E6E0F0",
     subtitulo: "La misteriosa",
     desc: "Negra, de ojos dorados y muy callada. La noctámbula del grupo.",
-    caps: ["4", "5", "5.1", "5.2", "6", "9"],
+    caps: ["4", "5", "5.1", "5.2", "6", "9", "10"],
     fisica: [
       "Gata negra de pelaje brillante con reflejos grisáceos.",
       "Ojos amarillos dorados que brillan en la oscuridad.",
@@ -86,7 +86,7 @@ const PERSONAJES = [
   { id: "manchas", nombre: "Manchas", grupo: "equipo", rol: "Amiga", tinte: "#FBE3C8",
     subtitulo: "La alegre",
     desc: "Calicó fiestera y comelona. La primera en celebrar.",
-    caps: ["4", "5", "5.1", "5.2", "6", "9"],
+    caps: ["4", "5", "5.1", "5.2", "6", "9", "10"],
     fisica: [
       "Gata calicó: blanca con manchas naranjas y negras.",
       "Ojos color miel y carita redonda.",
@@ -101,7 +101,7 @@ const PERSONAJES = [
   { id: "garras", nombre: "Garras", grupo: "villano", rol: "Villano", tinte: "#E9D6C6",
     subtitulo: "El villano (el gato grande)",
     desc: "Matón, tramposo y en el fondo cobarde. Quiere ser el dueño del barrio.",
-    caps: ["5", "5.1", "5.2", "9"],
+    caps: ["5", "5.1", "5.2", "9", "10"],
     fisica: [
       "Gato callejero grande y robusto, café oscuro con el pecho café claro.",
       "Ojos rojos, cejas siempre fruncidas y una cicatriz sobre el ojo.",
@@ -133,7 +133,7 @@ const PERSONAJES = [
   { id: "tuerto", nombre: "Tuerto", grupo: "villano", rol: "Pandilla de Garras", tinte: "#DDE5DC",
     subtitulo: "Pandilla de Garras",
     desc: "El “estratega” gruñón de la pandilla. Se cree pirata.",
-    caps: ["5.1", "5.2"],
+    caps: ["5.1", "5.2", "10"],
     fisica: [
       "Gato gris verdoso atigrado.",
       "Lleva un parche negro en el ojo izquierdo; el otro ojo es verde lima.",
@@ -219,6 +219,9 @@ const CAPITULOS = [
   { n: "9", titulo: "La revancha de Garras", img: "portada_cap9", video: "assets/videos/cap9.mp4",
     desc: "Un gatito tierno con moño toca la puerta para pedir perdón… ¡pero era Garras! Le roba la cama a Naranjoso, hasta que llegan sus amigos con la aspiradora.",
     url: "https://www.tiktok.com/@miausitos_oficial/video/7712635077057875207" },
+  { n: "10", titulo: "¡Feliz cumple Naranjoso!", img: "portada_cap10", video: "assets/videos/cap10.mp4",
+    desc: "Capítulo especial: Naranjoso cree que todos olvidaron su cumpleaños… pero sus amigos (¡y hasta Garras!) le preparan una fiesta sorpresa.",
+    url: "https://www.tiktok.com/@miausitos_oficial/video/7712961033949695238" },
 ];
 
 /* Partes: los capítulos con el mismo número (5 · 5.1 · 5.2, o 6 y su Sh. Ep.) se muestran juntos
